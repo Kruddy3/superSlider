@@ -3,7 +3,7 @@ Iterate through lists with jQuery.
 
 # HTML
 
-```html
+```HTML
 <div id="slider">
   <button class="super-left"></button>
   <ul>
@@ -11,7 +11,7 @@ Iterate through lists with jQuery.
     <li></li>
     <li></li>
   </ul>
-  <button class="super-left"></button>
+  <button class="super-right"></button>
 </div>
 ```
 
