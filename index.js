@@ -5,6 +5,7 @@
 $.fn.superSlider= function(opts){
   const options = {
     display: opts.display || 5,
+    isOverflow: opts.overflow || false,
     listContainer: opts.listContainer || "ul",
   }
 
@@ -15,11 +16,13 @@ $.fn.superSlider= function(opts){
     var len = $(this).children(options.listContainer).length;
     var that = this;
     var displayAmount = options.display;
+    var isOverflow = options.isOverflow;
     onLoad()
 
     $(this).css("border", "1px solid red");
 
     $(this).children("button:first").click(function() {
+
       rotateSet(false);
     })
 
@@ -34,15 +37,24 @@ $.fn.superSlider= function(opts){
       $(that).children("ul").children("li").show()
 
       if (isNext) {
-        currentSet = currentSet + displayAmount
-        if (currentSet >= totalElements) {
-          currentSet = currentSet-totalElements
+        if (currentSet + displayAmount >= totalElements && isOverflow == false) {
+          $(this).children("button:last").prop("disabled", "disabled");
+        }else {
+          currentSet = currentSet + displayAmount
+          if (currentSet >= totalElements) {
+            currentSet = currentSet-totalElements
+          }
         }
       }else {
-        currentSet = currentSet - displayAmount
-        if (currentSet < 0) {
-          currentSet = totalElements+currentSet
+        if (currentSet - displayAmount < 0 && isOverflow == false) {
+          $(this).children("button:first").prop("disabled", "disabled");
+        } else {
+          currentSet = currentSet - displayAmount
+          if (currentSet < 0) {
+            currentSet = totalElements+currentSet
+          }
         }
+
       }
       holder = currentSet+ displayAmount-1;
       console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -52,7 +64,7 @@ $.fn.superSlider= function(opts){
       console.log("Total elements ", totalElements);
 
       // if currentSet + displayAmount is larger than the total elements there will be wrapping
-      if (currentSet + displayAmount > totalElements) {
+      if (currentSet + displayAmount > totalElements  && isOverflow) {
         console.log("WRAPPING SHOULD OCCUR");
           // if there is overflow and the current pos isnt exactly overflowing
           console.log("Warpping but currentPos doesnt");
@@ -78,7 +90,7 @@ $.fn.superSlider= function(opts){
 
 $(".slider").superSlider({
   display:4,
-
+  // overflow:true,
 });
 
 
