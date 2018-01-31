@@ -1,6 +1,8 @@
 # superSlider API
 Iterate through lists with jQuery.
 
+# Installation
+ `$bower install superSlider`
 # HTML
 
 ```HTML
