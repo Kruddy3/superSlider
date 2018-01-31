@@ -12,6 +12,7 @@ $.fn.superSlider= function(opts){
     var len = $(this).children(options.listContainer).length;
     var that = this;
     var displayAmount = options.display;
+    var gtDisplayAmount = displayAmount -1;
     var isOverflow = options.isOverflow;
     onLoad()
 
@@ -30,17 +31,23 @@ $.fn.superSlider= function(opts){
     function rotateSet(isNext) {
       if (isOverflow) {
         // when right button is pressed
+        $(that).children("ul").children("li").show()
         if (isNext) {
-          // console.log($(that).children("ul").children("li")[0]);
-          console.log($(that).children("ul").children());
+          for (var i = 0; i < displayAmount; i++) {
+            var firstPlace = $(that).children("ul").children("li")[0];
+            $(that).children("ul").children("li")[0].remove();
+            $(that).children("ul").append(firstPlace)
+          }
+        }else {
+          for (var i = 0; i < displayAmount; i++) {
+            var lastPlace = $(that).children("ul").children("li").last();
+            $(that).children("ul").children("li").last().remove();
+            $(that).children("ul").prepend(lastPlace)
+          }
         }
-
-
-
-
-
-
-      }else {
+        $(that).children("ul").children("li:gt(" + gtDisplayAmount + ")").hide();
+      }
+      else {
         $(that).children("ul").children("li").show()
         if (isNext) {
           if (currentSet + displayAmount >= totalElements && isOverflow == false) {
@@ -71,7 +78,6 @@ $.fn.superSlider= function(opts){
         }
       }
     }
-
     function onLoad(displayAmount){
       displayFix = options.display-1
       $(that).children("ul").children("li:gt("+ displayFix + ")").hide()
@@ -81,5 +87,5 @@ $.fn.superSlider= function(opts){
 
 $(".slider").superSlider({
   display:5,
-  overflow:false,
+  overflow:true,
 });

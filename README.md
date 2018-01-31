@@ -23,5 +23,11 @@ Iterate through lists with jQuery.
 $("#slider").superSlider({
   // how many elements you want shown
   display:4, //defaults to 5
+
+  // if you want the items to loop back to the start or top at the end
+  overflow:true, //defaults to false
 });
 ```
+
+# CSS
+Make user to use your own styling especially if you are using overflow as jquery clears the margins when appended
