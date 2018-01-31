@@ -19,9 +19,9 @@ Iterate through lists with jQuery.
 
 ```javascript
 $("#slider").superSlider({
-  show: 5, //defaults to 5
-  onExit:"class-on-remove", //defaults to slider-remove
-  onEnter:"class-on-enter", //defaults to slider-enter
-  listContainer:"ul" //defaults to ul
+  // how many elements you want shown
+  display:4, //defaults to 5
+  // whether you want to loop back to the beginning or stop at the end
+  overflow:true, //defaults to false
 });
 ```
