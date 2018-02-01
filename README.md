@@ -1,5 +1,6 @@
 # superSlider API
 Iterate through lists with jQuery.
+[Demonstration website](https://thestraded.github.io/superSlider/)
 
 # Installation
  `$bower install superSlider`
