@@ -87,5 +87,5 @@ $.fn.superSlider= function(opts){
 
 $(".slider").superSlider({
   display:5,
-  overflow:true,
+  overflow:false,
 });
