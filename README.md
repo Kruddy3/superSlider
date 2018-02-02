@@ -8,14 +8,14 @@ Iterate through lists with jQuery.
 # HTML
 
 ```HTML
-<div id="slider">
-  <button class="super-left"></button>
-  <ul>
-    <li></li>
-    <li></li>
-    <li></li>
+<div class="slider">
+  <button class="super-left">Left</button>
+  <ul id="my-ul">
+    <li> !!WHATEVER YOU WANT LOOPED THROUGH!! </li>
+    <li> !!WHATEVER YOU WANT LOOPED THROUGH!! </li>
+    <li> !!WHATEVER YOU WANT LOOPED THROUGH!! </li>
   </ul>
-  <button class="super-right"></button>
+  <button class="super-right">Right</button>
 </div>
 ```
 
